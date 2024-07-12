@@ -2,6 +2,24 @@
 
 Differences between image and container
 
+# Running the first container
+
+https://hub.docker.com/_/nginx
+
+`docker run --name my_nginx -it -p 8080:80 nginx /bin/sh`
+
+etc/os-release
+exit
+(Use the browser)
+
+`docker container ps`
+
+`docker stop my_nginx`
+
+`docker start my_nginx` 
+
+`docker container ps -a`
+
 # How to get an image
 
 ## Getting Latest DotNet Linux Image
@@ -31,3 +49,14 @@ https://hub.docker.com/explore
 * docker image prune - remove all unused images
 * docker image inspect <image_name>
 
+### Container Commands
+
+* docker container ps [-a]
+* docker run -it -p ####:#### --name `<container_name>` `<image_name>` [start_command]
+* docker start `<container_name>`
+* docker stop `<container_name>`
+* docker container logs `<container_name>`
+* docker container --help
+* docker container rm `<container_name>`
+  * docker container rm $(docker ps -a --format '{{.Names}}')
+    (docker ps -a -q -f status=exited | xargs docker container rm)
